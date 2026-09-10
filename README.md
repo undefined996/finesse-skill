@@ -265,6 +265,7 @@ npx skills add https://github.com/mouse-lin/finesse-skill --skill "finesse-ui"
 | **Claude Code** | 完整 | `npx skills` 或原生插件 `.claude-plugin/plugin.json` |
 | **Trae / Trae 国内版** | 完整镜像 | 复制整个 `.trae/skills/finesse-ui/` 目录 |
 | **CodeBuddy** | 完整镜像 | 复制整个 `.codebuddy/skills/finesse-ui/` 目录 |
+| **豆包 Doubao** | 完整镜像 | 复制 `.doubao/skills/finesse-ui/` 到豆包技能目录（[见下](#豆包doubao)） |
 | **Cursor** | 单文件规则 | 复制 `.cursor/rules/finesse-ui.mdc` |
 | **OpenAI Codex** | 单文件指令 | 复制 `AGENTS.md` 到项目根目录 |
 | **GitHub Copilot** | 单文件指令 | 复制 `.github/copilot-instructions.md` |
@@ -313,9 +314,27 @@ cp -r .trae-cn/skills/finesse-ui your-project/.trae-cn/skills/
 cp -r .codebuddy/skills/finesse-ui your-project/.codebuddy/skills/
 ```
 
-> **为什么这三个是"完整镜像"**：Trae / CodeBuddy 的 Skills 目录结构与 Claude Code 原生一致，能按需加载全部 reference 文件，所以直接复制整个目录就拿到完整深度，不是精简版。
+### 豆包（Doubao）
+
+豆包桌面版的技能目录与 Claude Code 同构（`SKILL.md` + `references/` + `scripts/` 按需加载），但它是**全局安装**，不放进项目：
+
+```bash
+# macOS 豆包桌面版
+DOUBAO=~/"Library/Application Support/Doubao/Default/.doubao/agent_mode/workspace/.user_skills"
+mkdir -p "$DOUBAO" && cp -r .doubao/skills/finesse-ui "$DOUBAO"/
+```
+
+`.user_skills/` 与豆包内置的 `.skills/` 同级，是用户技能的加载根。装完重启豆包，问一句"你现在能用哪些技能"确认它在列表里。部分版本还会读 `~/Doubao/skills/`，如果没被识别，两处各放一份。
+
+用之前先知道三件事：
+
+- **豆包没有 `/finesse` 斜杠命令**。它不认 `user-invocable`，只能自然语言触发——说需求就行，或直接点名"用 finesse 做一个…"。
+- **触发词和豆包内置技能重叠**。内置的 `doubao-app-builder` 覆盖「H5 / 网页应用 / 管理后台 / 工作台 / 数据看板」，`doubao-creative-design` 覆盖「落地页 / 详情页 / Banner」，都会来抢同一句话。所以豆包镜像换了一份**中文优先、长度对齐豆包内置技能**的 frontmatter（正文与 reference 和源逐字一致，不是精简版）。万一还是被内置技能接走，在提示里点名 `finesse-ui`。
+- **`scripts/detect.mjs` 需要 node**。豆包环境没有 node 时只是跳过机器自检，其余规则照常。
+
+> **为什么这几个是"完整镜像"**：Trae / CodeBuddy / 豆包的 Skills 目录结构与 Claude Code 原生一致，能按需加载全部 reference 文件，所以直接复制整个目录就拿到完整深度，不是精简版。
 >
-> **改动请只提 `skills/finesse-ui/`**：那里是唯一真源，其余三份镜像和 Cursor 规则都是从它派生的静态拷贝，由维护者统一同步。直接改镜像的 PR 会在下次同步时被覆盖。
+> **改动请只提 `skills/finesse-ui/`**：那里是唯一真源，其余四份镜像和 Cursor 规则都是从它派生的静态拷贝，由维护者统一同步。直接改镜像的 PR 会在下次同步时被覆盖。豆包镜像唯一手工维护的是它自己的 frontmatter，正文同样来自源。
 
 </details>
 
@@ -339,6 +358,7 @@ finesse-skill/
 ├── AGENTS.md                     # OpenAI Codex 指令
 ├── .github/copilot-instructions.md
 ├── .trae/ · .trae-cn/ · .codebuddy/   # 完整镜像（脚本同步）
+├── .doubao/skills/finesse-ui/     # 豆包镜像（正文同源，frontmatter 为豆包定制）
 ├── USAGE.md · USAGE.en.md        # 给非设计背景用户的使用清单
 └── README.md · LICENSE
 ```

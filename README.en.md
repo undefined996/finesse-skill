@@ -265,6 +265,7 @@ Once installed, say "use finesse to build …" or `/finesse` in the chat to trig
 | **Claude Code** | full | `npx skills`, or the native plugin at `.claude-plugin/plugin.json` |
 | **Trae / Trae CN** | full mirror | copy the whole `.trae/skills/finesse-ui/` directory |
 | **CodeBuddy** | full mirror | copy the whole `.codebuddy/skills/finesse-ui/` directory |
+| **Doubao (豆包)** | full mirror | copy `.doubao/skills/finesse-ui/` into Doubao's skills root ([below](#doubao-豆包)) |
 | **Cursor** | single-file rule | copy `.cursor/rules/finesse-ui.mdc` |
 | **OpenAI Codex** | single-file instructions | copy `AGENTS.md` to your project root |
 | **GitHub Copilot** | single-file instructions | copy `.github/copilot-instructions.md` |
@@ -313,9 +314,27 @@ cp -r .trae-cn/skills/finesse-ui your-project/.trae-cn/skills/
 cp -r .codebuddy/skills/finesse-ui your-project/.codebuddy/skills/
 ```
 
-> **Why these three are "full mirrors"**: Trae and CodeBuddy use the same Skills directory layout as Claude Code, so they can load every reference file on demand. Copying the directory gets you the full depth, not a condensed version.
+### Doubao (豆包)
+
+Doubao's desktop app uses the same skill layout as Claude Code (`SKILL.md` + `references/` + `scripts/`, loaded on demand), but installs **globally** rather than per project:
+
+```bash
+# Doubao desktop, macOS
+DOUBAO=~/"Library/Application Support/Doubao/Default/.doubao/agent_mode/workspace/.user_skills"
+mkdir -p "$DOUBAO" && cp -r .doubao/skills/finesse-ui "$DOUBAO"/
+```
+
+`.user_skills/` sits next to Doubao's built-in `.skills/` and is the load root for user skills. Restart Doubao, then ask it "你现在能用哪些技能" to confirm it shows up. Some builds also read `~/Doubao/skills/` — if it isn't picked up, put a copy in both.
+
+Three things to know before you use it:
+
+- **No `/finesse` slash command in Doubao.** It ignores `user-invocable`, so trigger it in natural language — describe the job, or name it outright ("用 finesse 做一个…").
+- **Its trigger words overlap Doubao's built-in skills.** The built-in `doubao-app-builder` claims 「H5 / 网页应用 / 管理后台 / 工作台 / 数据看板」 and `doubao-creative-design` claims 「落地页 / 详情页 / Banner」 — both compete for the same sentence. So the Doubao mirror carries a **Chinese-first frontmatter sized against Doubao's own built-ins**; the body and every reference file are byte-identical to the source, not a condensed version. If a built-in still takes the job, name `finesse-ui` in the prompt.
+- **`scripts/detect.mjs` needs node.** Without it Doubao just skips the mechanical audit; every other rule still applies.
+
+> **Why these are "full mirrors"**: Trae, CodeBuddy and Doubao use the same Skills directory layout as Claude Code, so they can load every reference file on demand. Copying the directory gets you the full depth, not a condensed version.
 >
-> **Send PRs against `skills/finesse-ui/` only** — that is the single source of truth; the three mirrors and the Cursor rule are static copies derived from it and are re-synced by the maintainer. A PR editing a mirror directly gets overwritten on the next sync.
+> **Send PRs against `skills/finesse-ui/` only** — that is the single source of truth; the four mirrors and the Cursor rule are static copies derived from it and are re-synced by the maintainer. A PR editing a mirror directly gets overwritten on the next sync. The one hand-maintained piece is the Doubao mirror's own frontmatter; its body comes from the source like everything else.
 
 </details>
 
@@ -339,6 +358,7 @@ finesse-skill/
 ├── AGENTS.md                     # OpenAI Codex instructions
 ├── .github/copilot-instructions.md
 ├── .trae/ · .trae-cn/ · .codebuddy/   # full mirrors (script-synced)
+├── .doubao/skills/finesse-ui/     # Doubao mirror (same body, Doubao-tuned frontmatter)
 ├── USAGE.md · USAGE.en.md        # usage guide for non-designers
 └── README.md · LICENSE
 ```
