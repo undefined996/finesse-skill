@@ -1,7 +1,7 @@
 ---
 name: finesse-ui
-description: 做「不廉价」的高质感网页界面。覆盖四类：品牌页（落地页·官网·个人主页·作品集·发布页，含 WebGL/Three.js/Canvas/GSAP 真视觉引擎）、产品与工作台（dashboard·管理后台·数据看板·控制台·发布流程·配置页·数据表格）、AI 工作台与智能体控制台（运行流·工具调用·人工审批·成本账单）、电商页（商详·列表·购物车·结算）与 H5 手机端页面（活动页·app 原型·移动端商详·报告 H5，390×844 帧、安全区与拇指热区）。按 register 分流：brand 走灵魂+奇观引擎，product 走配色系统+组件+密度，commerce 走防暗黑模式骨架，h5 是容器再包一层内容语法。自带反同质化五轴、反廉价黑名单、动效六路线×十族效果目录、移动端六条底线，以及 scripts/detect.mjs 机器自检。触发词：让它高级点、有质感、别像 AI 做的、每次都差不多、落地页、官网、个人主页、作品集、dashboard、后台、工作台、每日工作台、打卡页、数据看板、控制台、AI 工作台、智能体控制台、商详页、结算页、H5、活动页、手机端页面、app 原型、动效、炫酷、加点动画、让它动起来、滚动动画、页面转场、微交互、单个组件、按钮、弹窗、抽屉、手机端错位、finesse。凡是要求「好看/高级/有设计感/别廉价」的页面、H5 或组件，先读本 skill 定标准再动手；即使代码由别的工具生成，这里的视觉与质感规则依然适用。
-version: 0.21.0
+description: 支持 Apple 苹果风设计语言：官网展示、应用界面与空间材质，按需加载规范及七个交互示例。做「不廉价」的高质感网页界面。覆盖四类：品牌页（落地页·官网·个人主页·作品集·发布页，含 WebGL/Three.js/Canvas/GSAP 真视觉引擎）、产品与工作台（dashboard·管理后台·数据看板·控制台·发布流程·配置页·数据表格）、AI 工作台与智能体控制台（运行流·工具调用·人工审批·成本账单）、电商页（商详·列表·购物车·结算）与 H5 手机端页面（活动页·app 原型·移动端商详·报告 H5，390×844 帧、安全区与拇指热区）。按 register 分流：brand 走灵魂+奇观引擎，product 走配色系统+组件+密度，commerce 走防暗黑模式骨架，h5 是容器再包一层内容语法。自带反同质化五轴、反廉价黑名单、动效六路线×十族效果目录、移动端六条底线，以及 scripts/detect.mjs 机器自检。触发词：让它高级点、有质感、别像 AI 做的、每次都差不多、落地页、官网、个人主页、作品集、dashboard、后台、工作台、每日工作台、打卡页、数据看板、控制台、AI 工作台、智能体控制台、商详页、结算页、H5、活动页、手机端页面、app 原型、动效、炫酷、加点动画、让它动起来、滚动动画、页面转场、微交互、单个组件、按钮、弹窗、抽屉、手机端错位、finesse。凡是要求「好看/高级/有设计感/别廉价」的页面、H5 或组件，先读本 skill 定标准再动手；即使代码由别的工具生成，这里的视觉与质感规则依然适用。
+version: 0.22.0
 license: MIT
 metadata:
   short-description: 做出永远不廉价的界面
@@ -20,6 +20,10 @@ metadata:
 > Every rule below is **contextual**. Nothing fires automatically. Read the brief, set the register, then pull only what fits. A skill that produces the same page for every brief has failed.
 
 ---
+
+## Apple design language (optional)
+
+For Apple style / 苹果风, read `references/apple-design.md` before choosing the substrate or persona. Keep the existing register, add `design-language=apple` and choose `apple-mode=editorial|app|spatial`. Its scoped overrides take precedence over conflicting aesthetic defaults below, including pure-black/white bans, mandatory grain/vignette, extreme leading and forced persona/engine rotation. Functional and accessibility gates still apply. Component requests retain component scope. Editorial recipes and seven runnable studies are indexed in `references/apple-patterns.md`.
 
 ## How to use this skill
 
@@ -44,6 +48,8 @@ The `references/*.md` files are the deep material. Load the one you need for the
 
 | Reference | When to load |
 |-----------|-------------|
+| `apple-design.md` | Explicit Apple / 苹果风 requests: mode routing, scoped overrides, typography, surfaces and materials |
+| `apple-patterns.md` | Apple editorial cards, Bento, contrast, spacing, corners and galleries; seven runnable studies |
 | `component-scope.md` | **Before the Brand Read, when the brief is one element, not a page** — a button, an input, a card, a modal. Routes to the component flow: keeps the register + craft floor + existing tokens, skips the skeleton / hero engine / rotation, and enforces the one gate that decides whether a component is well-made — **all eight states shipped**, plus a preview file that makes them visible instead of claimed |
 | `divergence.md` | **At §0, before the Design Read — the anti-sameness layer.** Load it when output keeps converging, when the user says "feels generic / like every other AI site", or before *any* soul decision: the five-axis composition method (compose a soul, don't select one from a list), the anti-default two-altitude check, the die roll that breaks the model's argmax, and the assert-then-confirm direction proposal. **§4 is the memory** — `.finesse/log.json` + the CSS stamp, with a defined read step (§0) and write step (§8); without it "don't repeat" is a rule with nothing behind it. **Read its §0 register boundary first** — divergence is a goal for brand and a *bounded* tactic for product (never diverge on dashboard navigation conventions) |
 | `design-dna.md` | Laying the **brand** substrate (grain, vignette, display type, color tokens, palette families). Product/dashboard inherits only its **universal craft floor** (§1: tinted neutrals, translucent borders, contrast floors) — the surfaces/cards/type/motion of a dashboard come from `product-ui.md` §0, not here |

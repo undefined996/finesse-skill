@@ -1,5 +1,7 @@
 # H5 — Pages That Only Ever Live on a Phone
 
+> **Apple language override:** when `design-language=apple`, load `apple-design.md` first. Its scoped rules allow deliberate black/white surfaces, clean editorial substrates without grain/vignette, content-weighted Bento and functional translucent chrome. Use its typography ranges; do not force an unrelated persona or engine. All functional, contrast and accessibility requirements remain in effect.
+
 The **fourth register.** `brand` / `product` / `commerce` all describe pages that are *primarily* desktop and *also* have to survive a phone. This file is the inverse: pages where the phone **is** the target, the desktop is the degraded case, and the viewport is a **fixed 390×844 rectangle** rather than a range to be responsive across.
 
 That inversion changes almost every mechanical decision, which is why it can't be a section inside `product-ui.md`:

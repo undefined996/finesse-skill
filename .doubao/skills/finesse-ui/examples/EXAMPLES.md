@@ -1,12 +1,8 @@
 # Examples — Positive Reference Corpus
 
-Twenty-two real pages (9 brand + 8 dashboards + 1 AI console + 4 H5), each a clean instance of one soul + one hero engine (brand register), one dashboard morphology (product register), or one phone morphology (h5 register). Read them to see the substrate, soul, and engine — or the layout shell, chart-crafting, and reduced-motion rules, or the phone frame and its native furniture — applied together in shipped code, **not as templates to copy verbatim**.
+The corpus includes brand pages, product interfaces, H5 screens and seven Apple editorial studies. Use the relevant example to inspect craft decisions, not as a universal page template.
 
-**All 22 are self-contained and runnable.** No remote assets, no image files: the dashboards inline their avatars/photos as data-URIs, the H5 pages generate their imagery from a `PH()` SVG placeholder function, and the 9 brand pages generate every visual in code (canvas, WebGL, SVG, CSS geometry). Libraries, where used at all, come from the bundled `lib/`. Four of the brand pages ship **zero JS libraries**. Opening any file in a browser renders and animates it.
-
-> **Why no photographs anywhere in this corpus?** Because assets are the one thing that doesn't travel. A recipe travels; a 4 MB JPEG doesn't. Pages whose craft depends on real photography — a photographic hero, a mask-dissolved product shot, a lookbook — are **not** bundled here; their techniques live as paste-ready recipes in `../references/page-crafting.md` (§2 image composition, §2.B the photographic-hero scrim stack) instead. When your brief *does* imply real imagery, that's `../references/asset-sourcing.md`'s job — and shipping zero imagery on an image-implied brief is a bug, not minimalism (`anti-cheap.md`).
-
-For a wider bench of technique notes beyond these files, `../references/inspiration-catalog.md` catalogues more pages by persona.
+The Apple studies are portable multi-file examples: retain `apple/` and `lib/` beside their HTML. They bundle product imagery; see [asset attribution](apple/ASSETS.md). Other examples retain their existing dependency arrangements. Sample data is illustrative.
 
 ## Brand register — read these as COORDINATES, not as templates
 
@@ -37,7 +33,7 @@ For a wider bench of technique notes beyond these files, `../references/inspirat
 
 ## Product register (dashboard morphology)
 
-Pulled from a batch of 10 demo dashboards built to stress-test `../references/product-ui.md` and `../references/chart-crafting.md`. These eight cover the full morphology range — canonical sidebar (dark + light), floating rounded panel, true bento, asymmetric bento, top-nav triptych, top-nav centered bento — plus tables, gauges, stacked/grouped bars, sparklines, KPI rows, and the browser-mockup/hotspot pattern. The four **new** ones (nodeflux/inkline/huddle/ledgerio) are **re-themed to fresh neutral domains** (not verbatim showcase copies) so you study the *structure*, then bring your own soul. Match the example to the morphology and light-vs-dark you're building (`product-ui.md` §0–§1); the remaining 2 (photo-studio, reelflow) live as technique notes in `../references/inspiration-catalog.md`.
+Pulled from a batch of 10 demo dashboards built to stress-test `../references/product-ui.md` and `../references/chart-crafting.md`. These eight cover the full morphology range — canonical sidebar (dark + light), floating rounded panel, true bento, asymmetric bento, top-nav triptych, top-nav centered bento — plus tables, gauges, stacked/grouped bars, sparklines, KPI rows, and the browser-mockup/hotspot pattern. The four **new** ones (nodeflux/inkline/huddle/ledgerio) are **re-themed to fresh neutral domains** (not verbatim source copies) so you study the *structure*, then bring your own soul. Match the example to the morphology and light-vs-dark you're building (`product-ui.md` §0–§1); the remaining 2 (photo-studio, reelflow) live as technique notes in `../references/inspiration-catalog.md`.
 
 | File | Shell | What to study |
 |------|-------|----------------|
@@ -97,3 +93,20 @@ The "open the closest example first" rule in `product-ui.md` §0 means *study sh
 **Every page here passes `scripts/detect.mjs`** — no P0 findings. That is the bar for the corpus: an example that violates the rules teaches the violation, because a positive reference is copied far more literally than a prose rule is followed. If you add a page here, run the detector on it first. And a clean detector run is still only the regex layer — it cannot see whether the soul is distinct or the engine renders real pixels. Look at the page.
 
 **Lift patterns, not whole files.** Each new brief deserves its own soul.
+
+
+## Apple editorial studies
+
+These preserve a coherent design language; variation happens inside it. Load `../references/apple-design.md` and `../references/apple-patterns.md` before adapting them.
+
+| Example | What to inspect |
+| --- | --- |
+| [Overview](apple-overview.html) | Card proportion and hierarchy |
+| [Bento](apple-bento.html) | Dominant tile, guides, spacing and animated reflow |
+| [Contrast](apple-contrast.html) | Dark/light composition and numeric hierarchy |
+| [Layout](apple-layout.html) | Independent gaps and draggable/keyboard magnifier |
+| [Gallery](apple-gallery.html) | Flowing rail, pause, drag, keyboard and detail dialog |
+| [Corners](apple-corners.html) | Radius comparison and light direction |
+| [Palette](apple-palette.html) | Four neutral surface relationships |
+
+For app and gesture behavior, combine the Apple rules with the existing product/H5 examples and [sheet lab](h5-sheet-lab.html). Editorial studies do not certify native app or spatial behavior.

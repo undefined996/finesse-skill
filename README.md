@@ -10,10 +10,10 @@
 
 给 AI 编码助手用的设计技能。它不生成"还行"的页面，它生成有灵魂、有工艺、经得起看的页面。
 
-[![version](https://img.shields.io/badge/version-0.20.0-111?style=flat-square)](https://github.com/mouse-lin/finesse-skill/releases)
+[![version](https://img.shields.io/badge/version-0.22.0-111?style=flat-square)](https://github.com/mouse-lin/finesse-skill/releases)
 [![license](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
-[![rules](https://img.shields.io/badge/设计规则-28_篇-c9863f?style=flat-square)](skills/finesse-ui/references)
-[![examples](https://img.shields.io/badge/示例页面-22_个-5ee9c8?style=flat-square)](skills/finesse-ui/examples)
+[![rules](https://img.shields.io/badge/设计规则-31_篇-c9863f?style=flat-square)](skills/finesse-ui/references)
+[![examples](https://img.shields.io/badge/示例页面-30_个-5ee9c8?style=flat-square)](skills/finesse-ui/examples)
 
 [快速开始](#快速开始) · [四条路线](#四条路线register) · [核心能力](#核心能力) · [示例作品](#示例作品) · [安装](#安装--工具支持) · [使用清单](USAGE.md)
 
@@ -82,6 +82,7 @@ npx skills add https://github.com/mouse-lin/finesse-skill
 - **高级感物理层** — grain / vignette / 字重张力 / 配色家族<br><sub>提炼自 53 页行业展示页语料</sub>
 - **五类 hero 视觉引擎** — Three.js · Canvas · WebGL-FBO · GSAP · CSS-only，各含 reduced-motion 降级骨架
 - **3D 效果谱系** — CSS 伪 3D（倾斜 / 翻转 / coverflow / 景深）+ Three.js 真 3D
+- **Apple 设计语言** — 官网展示 · 应用界面 · 空间材质，按页面用途选择<br><sub>系统字体 · 黑白层级 · 内容驱动的 Bento · 跟手反馈，适用于现有四条路线</sub>
 - **OKLCH 配色阶梯** — restrained / committed / full / drenched 四档承诺
 
 </td>
@@ -243,6 +244,24 @@ npx skills add https://github.com/mouse-lin/finesse-skill
 
 </details>
 
+<details open>
+<summary><b>Apple 设计语言</b> —— 卡片比例 · 黑白层级 · 留白与交互</summary>
+
+<br>
+
+| | |
+|:---:|:---:|
+| ![Apple Bento — 主视觉跨行，辅助卡片围绕内容组织](assets/examples/apple-bento.jpg) | ![Apple Contrast — 黑白背景与产品明暗共同建立层级](assets/examples/apple-contrast.jpg) |
+| **[Bento Grid](skills/finesse-ui/examples/apple-bento.html)** · 主卡层级 + 网格重排 | **[黑白对比](skills/finesse-ui/examples/apple-contrast.html)** · 明度层级 + 产品留白 |
+
+[卡片总览](skills/finesse-ui/examples/apple-overview.html) · [标准圆角](skills/finesse-ui/examples/apple-corners.html) · [横竖间距](skills/finesse-ui/examples/apple-layout.html) · [多图排版](skills/finesse-ui/examples/apple-gallery.html) · [配色关系](skills/finesse-ui/examples/apple-palette.html)
+
+> **七个可交互的设计练习** —— 调整间距、切换主卡位置、拖动图库、展开产品细节，把比例与节奏放到手上比较。字体、材质和跟手反馈也纳入同一套规范。
+>
+> <sub>产品图片用于设计学习，权利归原权利人；[素材说明](skills/finesse-ui/examples/apple/ASSETS.md)。</sub>
+
+</details>
+
 ---
 
 ## 安装 & 工具支持
@@ -351,8 +370,8 @@ mkdir -p "$DOUBAO" && cp -r .doubao/skills/finesse-ui "$DOUBAO"/
 finesse-skill/
 ├── skills/finesse-ui/
 │   ├── SKILL.md                  # 主入口：方法论 + 流程 + 路由
-│   ├── references/               # 27 篇详细规则，AI 用到哪篇读哪篇
-│   └── examples/                 # 22 个打开就能跑的示例页 + 索引
+│   ├── references/               # 31 篇详细规则，AI 用到哪篇读哪篇
+│   └── examples/                 # 30 个打开就能跑的示例页 + 索引
 ├── .claude-plugin/plugin.json    # Claude Code 原生插件
 ├── .cursor/rules/finesse-ui.mdc  # Cursor 规则（单文件，自动加载）
 ├── AGENTS.md                     # OpenAI Codex 指令
@@ -363,7 +382,7 @@ finesse-skill/
 └── README.md · LICENSE
 ```
 
-### 那 27 篇规则都写了什么
+### 那 31 篇规则都写了什么
 
 | 分类 | 文件 |
 |:---|:---|
@@ -371,6 +390,8 @@ finesse-skill/
 | **brand** | `design-dna.md` 物理层 · `hero-engines.md` 五类引擎 · `page-crafting.md` 实现层 · `3d-effects.md` |
 | **product** | `product-ui.md` · `product-palettes.md` 配色库 · `workflow-ui.md` 流程页 · **`ai-console.md`** AI 工作台 · `dataviz.md` 图表选型 · `chart-crafting.md` 手搓图表 |
 | **commerce / h5** | `commerce-ui.md` · **`h5-mobile.md`** 手机专属全套 |
+| **Apple 设计语言** | [`apple-design.md`](skills/finesse-ui/references/apple-design.md) 字体与材质 · [`apple-patterns.md`](skills/finesse-ui/references/apple-patterns.md) 卡片与布局 |
+| **动效与交互** | `motion.md` 动效选型 · `interaction-motion.md` 跟手、中断与速度衔接 |
 | **移动端** | `mobile-floor.md` 桌面页在手机上不坏掉的六条 |
 | **质量闸门** | `anti-cheap.md` 反廉价 · `preflight.md` 起飞前自检 · `audit.md` 只读诊断 · `redesign-mode.md` 改造模式（审计优先） · `component-scope.md` 单组件八态 |
 | **项目记忆** | `init.md` 写 PRODUCT.md · `document.md` 提取现有设计系统 · `design-model.md` 多页一致性 · `theming.md` 主题切换 |

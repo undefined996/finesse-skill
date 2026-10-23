@@ -6,6 +6,25 @@ This isn't the rules file the Skill reads (`skills/finesse-ui/SKILL.md` — thou
 
 ---
 
+## Apple design language (0.22.0)
+
+Choose Apple as a design language over brand, product, commerce or h5. Select editorial for product stories, app for functional interfaces, or spatial for explicitly requested depth/materials. “Apple style” does not automatically add glass, Bento or 3D.
+
+- [Design rules](skills/finesse-ui/references/apple-design.md): typography, neutral surfaces, corners, materials and scoped default overrides.
+- [Layout recipes](skills/finesse-ui/references/apple-patterns.md): cards, Bento, contrast, spacing and galleries.
+- [Seven interactive studies](skills/finesse-ui/examples/apple-overview.html): bundled styles, scripts and media for offline viewing. Keep the adjacent `apple/` and `lib/` folders.
+- Gestures reuse the shared interaction reference with interruption, velocity handoff and projected detents. The detector only exempts the pure-black/white hint for explicitly stamped Apple files; other checks still run.
+
+Product imagery and figures are educational composition material. Third-party imagery is not relicensed by the repository MIT license; see [asset notes](skills/finesse-ui/examples/apple/ASSETS.md) and use appropriate project assets in production.
+
+### Prompts to try
+
+> Build an Apple-inspired product page with white/gray surfaces, one dominant product image and a mobile reflow.
+> Make this settings page Apple-inspired while preserving its form structure.
+> Create a spatial tool panel; use translucency only for chrome and keep reading surfaces clear.
+
+For an existing component, say “change only this component.” Ask for reduced-motion, keyboard, mobile reading-order and dialog focus-return checks at delivery.
+
 ## The 30-second version
 
 1. State the **page type** (landing/dashboard/portfolio/commerce) + **1-2 mood words**.
@@ -33,7 +52,7 @@ finesse splits pages into genuinely different routes. Naming the type tells it w
 
 **The one thing to be clear about on the h5 route: is this page phone-only?** "It should look good on a phone too" and "it only ever opens on a phone" are different jobs — the first is a normal page with proper mobile handling, only the second goes h5. If you can't tell, that's fine: finesse will ask you *"does this page only open on a phone, or does it need to look good on a desktop too?"*
 
-**Not sure which bucket?** Just say so — "I'm not sure if this should feel more showcase-y or more tool-y" — and it will ask a clarifying question rather than guess blindly.
+**Not sure which bucket?** Just say so — "I'm not sure if this should feel more presentation-oriented or more tool-y" — and it will ask a clarifying question rather than guess blindly.
 
 ### 1.2 Mood words: give 1-2 of the most important ones, not a pile
 

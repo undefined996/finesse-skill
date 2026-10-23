@@ -5,6 +5,10 @@
 
 ---
 
+## Apple design language
+
+For Apple / 苹果风 requests, read `skills/finesse-ui/references/apple-design.md` before choosing the substrate. Keep the register and add `design-language=apple` plus `apple-mode=editorial|app|spatial`. The scoped aesthetic overrides there supersede conflicting defaults in this file. Editorial recipes and seven portable interactive studies are indexed in `skills/finesse-ui/references/apple-patterns.md`. Reuse `interaction-motion.md` for gestures; app and spatial do not automatically mean Bento or glass everywhere.
+
 ## What finesse does
 
 finesse builds interfaces routed by **register**:
@@ -63,8 +67,8 @@ Product register: pin SPECTACLE ≤ 4, DENSITY ≥ 6.
 
 If SPECTACLE ≥ 7, you MUST ship a working engine. A gradient blob at SPECTACLE 8 is broken. Drop to 4 and ship a polished static page instead.
 
-### 3. Lay the premium substrate (both registers)
-Non-negotiables — see `skills/finesse-ui/references/design-dna.md` for exact values:
+### 3. Lay the substrate for the selected register
+Brand defaults follow `skills/finesse-ui/references/design-dna.md`; product uses `product-ui.md` §0 and does not inherit grain, vignette or giant display type. Apple language uses the scoped overrides above. Brand defaults:
 - SVG grain layer (`feTurbulence`, `opacity .025–.05`)
 - Radial-gradient vignette on dark heroes
 - Display headings: `clamp()` size, negative tracking (`-.02 to -.045em`), `line-height .86–.95`, extreme weight contrast
@@ -109,7 +113,7 @@ It reports findings P0/P1/P2 with `file:line`, a `p0` count, and a `notCovered[]
 ### 6. Pre-flight before declaring done
 See `skills/finesse-ui/references/preflight.md`. Run `node skills/finesse-ui/scripts/detect.mjs --json <target>` and confirm `p0` is 0 (the script always exits 0; the count lives in the JSON), and when a browser is available, open the page and screenshot the hero to confirm the engine renders real pixels (not a white/flat screen). Mandatory gates:
 - [ ] Design Read output + dials documented
-- [ ] Substrate applied (grain, vignette, type tension, color lock)
+- [ ] Correct register/language substrate applied; grain/vignette are not universal gates
 - [ ] SPECTACLE claimed = SPECTACLE shipped (detector + browser-verified, not just asserted)
 - [ ] Cheapness blacklist cleared
 - [ ] `prefers-reduced-motion` handled on every animation

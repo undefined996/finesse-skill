@@ -2,6 +2,10 @@
 
 > GitHub Copilot reads this file automatically. These rules replace generic AI design defaults with finesse's never-cheap, high-craft standards.
 
+## Apple design language
+
+For Apple / 苹果风 requests, first read `skills/finesse-ui/references/apple-design.md`. Retain the register and choose editorial, app or spatial mode. Its scoped overrides supersede conflicting aesthetic defaults below: deliberate black/white surfaces and clean editorial layouts are allowed; grain, vignette, a hero engine and glass are not automatic requirements. Keep accessibility and functional gates. Use `apple-patterns.md` for the seven bundled card studies and `interaction-motion.md` for gestures.
+
 ## Core Directive
 
 You are generating UI for a finesse project. finesse routes by **register**:

@@ -291,3 +291,19 @@ Before shipping any pointer-driven interaction:
 8. **`prefers-reduced-motion: reduce`** — sheets appear at their end state; nothing depends on a tween having run.
 
 Passing 1 and 2 *both* is the whole point of §2.4 — most implementations pass one.
+
+
+## 8. Interruptible settling and velocity continuity
+
+Applies to every draggable interface, including Apple app/spatial mode. A transition triggered by a tap may use CSS; an element that can be grabbed mid-flight needs explicit ownership of its live position and velocity.
+
+1. On re-grab, stop the old animation without completing it. Capture the rendered position and current velocity, keep the grab offset, then follow the pointer 1:1. Never reset to the old logical destination.
+2. On release, carry the measured signed velocity into the settling spring. On programmatic retarget, preserve the spring's current position and velocity. An ease-out tween with a spring-looking curve does not by itself preserve velocity.
+3. Maintain one controller per property. Clean up old frame callbacks/listeners, and handle pointer cancellation separately from a confirmed release: restore or settle safely without committing a destructive action.
+4. Use a non-bouncy settling response by default. Bounce is optional when momentum makes it meaningful. Choose a spring implementation that exposes interruption and velocity; no additional library is required for ordinary press feedback.
+
+**Units matter.** §2.3 measures px/ms. A spring taking px/s needs `velocityPxPerSecond = velocityPxPerMs * 1000`. Do not normalize by remaining distance unless the specific API requires it; a zero remaining distance would divide by zero.
+
+For multiple detents, choose position proximity for slow placement. For a deliberate fast release, a bounded projection can choose a reachable detent in the direction of travel. Example starting heuristic: `projected = clamp(min, max, position + velocityPxPerMs * 180)`, then choose an allowed detent. The 180ms horizon is a tunable finesse heuristic, not an Apple constant. Keep §3's proximity-first behavior for careful placement, and do not substitute projected snapping for the binary dismiss/commit decision.
+
+With reduced motion, settle immediately or use a short non-spatial transition; retain feedback and the final usable state. Check re-grab/reverse and rapid retargeting, not just a single uninterrupted animation. The existing sheet lab demonstrates tracking and thresholds; it is not proof of velocity-continuous spring handoff.

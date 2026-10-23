@@ -1,5 +1,5 @@
 ---
-description: 'finesse-ui design skill — never-cheap, high-craft web interfaces. Routes by register: brand (landing pages, hero sites, portfolios, lookbooks) → soul + spectacle engine, with four distinct page skeletons (landing · portfolio · lookbook · studio); product (dashboards, admin, analytics, 商家后台/consoles, publish wizards, settings) → tinted palette + component system + data viz, split into pages you READ (dashboards) vs pages you OPERATE (consoles/wizards); h5 (H5 / 移动端页面 / 活动页 / app 原型 / mobile PDP) → a container register that fixes the phone frame, safe areas, thumb zone and native furniture, then wraps one of the others. Composes a soul from five orthogonal axes instead of picking one off a persona list, so repeat runs stop converging on the same look. Enforces premium substrate, anti-slop blacklist, motion gates, and pre-flight check on every output.'
+description: 'Supports Apple-inspired / 苹果风 editorial, app and spatial design-language modes. finesse-ui design skill — never-cheap, high-craft web interfaces. Routes by register: brand (landing pages, hero sites, portfolios, lookbooks) → soul + spectacle engine, with four distinct page skeletons (landing · portfolio · lookbook · studio); product (dashboards, admin, analytics, 商家后台/consoles, publish wizards, settings) → tinted palette + component system + data viz, split into pages you READ (dashboards) vs pages you OPERATE (consoles/wizards); h5 (H5 / 移动端页面 / 活动页 / app 原型 / mobile PDP) → a container register that fixes the phone frame, safe areas, thumb zone and native furniture, then wraps one of the others. Composes a soul from five orthogonal axes instead of picking one off a persona list, so repeat runs stop converging on the same look. Enforces premium substrate, anti-slop blacklist, motion gates, and pre-flight check on every output.'
 globs: ["**/*.html", "**/*.css", "**/*.scss", "**/*.sass", "**/*.tsx", "**/*.jsx", "**/*.ts", "**/*.js", "**/*.vue", "**/*.svelte"]
 alwaysApply: false
 ---
@@ -18,6 +18,10 @@ alwaysApply: false
 > Every rule below is **contextual**. Nothing fires automatically. Read the brief, set the register, then pull only what fits. A skill that produces the same page for every brief has failed.
 
 ---
+
+## Apple design language (optional)
+
+For Apple style / 苹果风, read `references/apple-design.md` before choosing the substrate or persona. Keep the existing register, add `design-language=apple` and choose `apple-mode=editorial|app|spatial`. Its scoped overrides take precedence over conflicting aesthetic defaults below, including pure-black/white bans, mandatory grain/vignette, extreme leading and forced persona/engine rotation. Functional and accessibility gates still apply. Component requests retain component scope. Editorial recipes and seven runnable studies are indexed in `references/apple-patterns.md`.
 
 ## How to use this skill
 
@@ -42,6 +46,8 @@ The `references/*.md` files are the deep material. Load the one you need for the
 
 | Reference | When to load |
 |-----------|-------------|
+| `apple-design.md` | Explicit Apple / 苹果风 requests: mode routing, scoped overrides, typography, surfaces and materials |
+| `apple-patterns.md` | Apple editorial cards, Bento, contrast, spacing, corners and galleries; seven runnable studies |
 | `component-scope.md` | **Before the Brand Read, when the brief is one element, not a page** — a button, an input, a card, a modal. Routes to the component flow: keeps the register + craft floor + existing tokens, skips the skeleton / hero engine / rotation, and enforces the one gate that decides whether a component is well-made — **all eight states shipped**, plus a preview file that makes them visible instead of claimed |
 | `divergence.md` | **At §0, before the Design Read — the anti-sameness layer.** Load it when output keeps converging, when the user says "feels generic / like every other AI site", or before *any* soul decision: the five-axis composition method (compose a soul, don't select one from a list), the anti-default two-altitude check, the die roll that breaks the model's argmax, and the assert-then-confirm direction proposal. **§4 is the memory** — `.finesse/log.json` + the CSS stamp, with a defined read step (§0) and write step (§8); without it "don't repeat" is a rule with nothing behind it. **Read its §0 register boundary first** — divergence is a goal for brand and a *bounded* tactic for product (never diverge on dashboard navigation conventions) |
 | `design-dna.md` | Laying the **brand** substrate (grain, vignette, display type, color tokens, palette families). Product/dashboard inherits only its **universal craft floor** (§1: tinted neutrals, translucent borders, contrast floors) — the surfaces/cards/type/motion of a dashboard come from `product-ui.md` §0, not here |

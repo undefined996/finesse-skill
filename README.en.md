@@ -10,10 +10,10 @@
 
 A design skill for AI coding assistants. It doesn't produce pages that are "fine". It produces pages with a soul, with craft, that hold up when you look closely.
 
-[![version](https://img.shields.io/badge/version-0.20.0-111?style=flat-square)](https://github.com/mouse-lin/finesse-skill/releases)
+[![version](https://img.shields.io/badge/version-0.22.0-111?style=flat-square)](https://github.com/mouse-lin/finesse-skill/releases)
 [![license](https://img.shields.io/badge/license-MIT-111?style=flat-square)](LICENSE)
-[![rules](https://img.shields.io/badge/design_rules-28_files-c9863f?style=flat-square)](skills/finesse-ui/references)
-[![examples](https://img.shields.io/badge/example_pages-22-5ee9c8?style=flat-square)](skills/finesse-ui/examples)
+[![rules](https://img.shields.io/badge/design_rules-31_files-c9863f?style=flat-square)](skills/finesse-ui/references)
+[![examples](https://img.shields.io/badge/example_pages-30-5ee9c8?style=flat-square)](skills/finesse-ui/examples)
 
 [Quick start](#quick-start) · [Four registers](#four-registers) · [What's inside](#whats-inside) · [Examples](#examples) · [Install](#installation--tool-support) · [Usage guide](USAGE.en.md)
 
@@ -79,9 +79,10 @@ All four share the same foundation: **premium physical substrate + anti-slop aud
 
 **Visual craft**
 
-- **Premium physical substrate** — grain / vignette / type tension / color families<br><sub>distilled from a 53-page industry showcase corpus</sub>
+- **Premium physical substrate** — grain / vignette / type tension / color families<br><sub>distilled from a 53-page industry reference corpus</sub>
 - **Five hero engine types** — Three.js · Canvas · WebGL-FBO · GSAP · CSS-only, each with a reduced-motion fallback skeleton
 - **3D effects spectrum** — CSS pseudo-3D (tilt / flip / coverflow / depth-parallax) + Three.js real 3D
+- **Apple design language** — editorial pages · app interfaces · spatial materials, selected by purpose<br><sub>System type · neutral hierarchy · content-weighted Bento · direct feedback, across all four registers</sub>
 - **OKLCH color ladder** — four commitment levels: restrained / committed / full / drenched
 
 </td>
@@ -243,6 +244,24 @@ Palette is `product-palettes.md` Set 7 wired to the semantic pair an agent bring
 
 </details>
 
+<details open>
+<summary><b>Apple design language</b> — card proportions · light and dark · space and interaction</summary>
+
+<br>
+
+| | |
+|:---:|:---:|
+| ![Apple Bento — a dominant product tile surrounded by supporting content](assets/examples/apple-bento.jpg) | ![Apple Contrast — surface and product luminance establish hierarchy](assets/examples/apple-contrast.jpg) |
+| **[Bento Grid](skills/finesse-ui/examples/apple-bento.html)** · dominant tile + grid reflow | **[Light and dark](skills/finesse-ui/examples/apple-contrast.html)** · luminance hierarchy + product spacing |
+
+[Overview](skills/finesse-ui/examples/apple-overview.html) · [Corners](skills/finesse-ui/examples/apple-corners.html) · [Spacing](skills/finesse-ui/examples/apple-layout.html) · [Gallery](skills/finesse-ui/examples/apple-gallery.html) · [Palettes](skills/finesse-ui/examples/apple-palette.html)
+
+> **Seven interactive design studies** — adjust spacing, move the primary tile, drag the gallery and expand product details to compare proportion and rhythm. Typography, materials and direct feedback share the same design rules.
+>
+> <sub>Product imagery is included for design study and remains the property of its rights holders; see [asset notes](skills/finesse-ui/examples/apple/ASSETS.md).</sub>
+
+</details>
+
 ---
 
 ## Installation & tool support
@@ -351,8 +370,8 @@ Three things to know before you use it:
 finesse-skill/
 ├── skills/finesse-ui/
 │   ├── SKILL.md                  # main entry: methodology + flow + routing
-│   ├── references/               # 27 detailed rule files, loaded on demand
-│   └── examples/                 # 22 runnable example pages + an index
+│   ├── references/               # 31 detailed rule files, loaded on demand
+│   └── examples/                 # 30 runnable example pages + an index
 ├── .claude-plugin/plugin.json    # Claude Code native plugin
 ├── .cursor/rules/finesse-ui.mdc  # Cursor rule (single file, auto-loaded)
 ├── AGENTS.md                     # OpenAI Codex instructions
@@ -363,7 +382,7 @@ finesse-skill/
 └── README.md · LICENSE
 ```
 
-### What those 27 rule files cover
+### What those 31 rule files cover
 
 | Group | Files |
 |:---|:---|
@@ -371,6 +390,8 @@ finesse-skill/
 | **brand** | `design-dna.md` the substrate · `hero-engines.md` five engines · `page-crafting.md` implementation layer · `3d-effects.md` |
 | **product** | `product-ui.md` · `product-palettes.md` color library · `workflow-ui.md` wizards & consoles · **`ai-console.md`** AI workbenches · `dataviz.md` chart selection · `chart-crafting.md` hand-built charts |
 | **commerce / h5** | `commerce-ui.md` · **`h5-mobile.md`** the full phone-only spec |
+| **Apple design language** | [`apple-design.md`](skills/finesse-ui/references/apple-design.md) type & materials · [`apple-patterns.md`](skills/finesse-ui/references/apple-patterns.md) cards & layouts |
+| **Motion & interaction** | `motion.md` effect selection · `interaction-motion.md` tracking, interruption & velocity handoff |
 | **Mobile** | `mobile-floor.md` the six ways a desktop page breaks on a phone |
 | **Quality gates** | `anti-cheap.md` anti-slop · `preflight.md` pre-flight · `audit.md` read-only diagnostic · `redesign-mode.md` audit-first redesign · `component-scope.md` the eight component states |
 | **Project memory** | `init.md` write PRODUCT.md · `document.md` extract an existing design system · `design-model.md` multi-page consistency · `theming.md` theme switching |
